@@ -1,0 +1,40 @@
+//Leer n números enteros almacenados en un vector. Luego leer un entero y determinar cuantos números de los almacenados en el vector terminan
+//en el mismo dígito que el último valor leído.
+
+
+Inicio
+	Vector, contador, digito, i(i[0-n])
+    contador ￩ 0, digito ￩ 0, i ￩ 0
+    Vector[10]
+
+	>> "Ingrese el dígito: "
+	<< digito
+	
+	contador = 0
+
+	>> "Ingrese los valores del vector: "
+    Para (i = 0; i  < 10 ; i++) Hacer
+		<< Vector[i]
+		Si (ComprobarDigito(Vector[i], digito) == Verdadero) Entonces
+			contador = contador + 1
+		FinSi
+	FinPara
+
+	>> "El número ", +digito, " se repite " ,+contador, " veces en el vector en las posiciones: "
+	
+	Para (i = 0; i  < 10 ; i++) Hacer
+		Si ComprobarDigito(Vector[i], digito) Entonces
+			>> i , " " 
+		FinSi
+	FinPara
+Fin
+
+Funcion ComprobarDigito(num, digito):
+    TerminaEn(b[Falso-Verdadero])
+	TerminaEn = Falso
+	Si (num % 10 == digito) Entonces		
+		TerminaEn = Verdadero
+	FinSi
+
+    Retornar TerminaEn
+FinFuncion

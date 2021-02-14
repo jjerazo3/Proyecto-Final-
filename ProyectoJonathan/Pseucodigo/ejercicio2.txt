@@ -1,0 +1,83 @@
+//Leer 2 matrices enteras y determinar si el mayor número almacenado en una de ellas que pertenezca a la serie Fibonnaci es igual
+//al mayor número almacenado en la otra matriz que pertenezca a la serie de Finonacci
+
+Inicio
+	matriz1, matriz2, mayor1, mayor2, i, j (i[0-n])
+	matriz1[4][6]
+	matriz2[4][6]
+	
+	
+	//Se leen los valores de la primera matriz
+	>> "Ingrese los valores de la primera matriz 4 x 6: "
+	Para (i = 0; i < 4; i++) Hacer 
+		Para (j = 1; i < 6; j++) Hacer
+			<< matriz1[i][j]
+		FinPara
+	FinPara
+	
+	//Se leen los valores de la segunda matriz
+	>> "Ingrese los valores de la segunda matriz 4 x 6: "
+	Para (i = 0; i < 4; i++) Hacer 
+		Para (j = 0; j < 6; j++) Hacer
+			<< matriz2[i][j]
+		FinPara
+	FinPara
+	
+	mayor1 = ObtenerMayor(matriz1)
+	mayor2 = ObtenerMayor(matriz2)
+	Si (PerteneceALaSerie(mayor1) == Verdadero) y (PerteneceALaSerie(mayor2) == Verdadero)  Entonces
+		>> "Los 2 mayores números de cada matriz sí pertencen a la serie Fibonacci"
+	SiNo
+		>> "Uno o ambos mayores números de cada matriz no pertenecen a la serie Fibonacci. "
+	FinSi
+	
+	Si (mayor1 == mayor2) Entonces
+		>> "Los números son iguales."
+	SiNo
+		>> "Los números no son iguales."
+	FinSi
+	
+	>> "Número mayor de la primera matriz: ", mayor1
+	>> "Número mayor de la segunda matriz: ", mayor2
+	
+Fin
+
+Funcion PerteneceALaSerie(num):
+	suma, num1, num2, i (i[0-n])
+	Pertenece ￩ Falso
+	num1 ￩ 0, num2 ￩ 1, suma ￩ 1, i ￩ 0
+	Para (i = 0; i < num; i++) Hacer
+		Si (num == suma) Entonces
+			Pertenece = verdadero
+			suma = num1 + num2
+			num1 = num2
+			num2 = suma
+		FinSi
+	FinPara
+
+    Retornar Pertenece
+FinFuncion
+
+Funcion ObtenerMayor(Arreglo):
+	res, may, i, j , h, k(i[0-n])
+    res ￩ 0, may ￩ 0, i ￩ 0, j ￩ 0 , h ￩ 0, k ￩ 0
+
+	//Se ordena el vector de forma descendente
+	Para (i = 0; i < 4; i++) Hacer
+		Para (j = 0; j < 6; j++) Hacer
+			Para (h = 0; h < 4; h++) Hacer
+				Para (k = 0; k < 6; k++) Hacer
+					Si(Arreglo[i][j] > Arreglo[h][k]) Entonces
+						res = Arreglo[i,j]
+						Arreglo[i][j] = Arreglo[h][k]
+						Arreglo[h][k] = res
+					FinSi
+				FinPara
+			FinPara
+		FinPara
+	FinPara
+	
+	may = Arreglo[0,0]
+
+    Retornar may
+FinFuncion
